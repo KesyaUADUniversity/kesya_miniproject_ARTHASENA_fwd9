@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harga - ARTHASENA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #f0f4f1;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col dark:bg-gray-900 dark:text-white">
+
+  <!-- Navbar -->
+  <nav class="w-full bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="index.html" class="flex items-center space-x-2">
+        <img src="ARTHASENA.jpeg" alt="ARTHASENA" class="h-8 w-auto rounded">
+        <span class="font-bold text-gray-800 dark:text-white">ARTHASENA</span>
+      </a>
+      <div class="flex space-x-6">
+        <a href="index.html" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Beranda</a>
+        <a href="tentang.html" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Tentang</a>
+        <a href="harga.html" class="font-medium text-blue-600 dark:text-blue-400">Harga</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Konten Harga -->
+  <main class="container mx-auto px-4 py-16">
+    <div class="text-center mb-12">
+      <h1 class="text-3xl font-bold text-gray-800 dark:text-white">Pilih Paket yang Tepat untuk Anda</h1>
+      <p class="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        Dukung UMKM lokal dengan fitur yang sesuai kebutuhan Anda.
+      </p>
+    </div>
+
+    <!-- Kartu Paket -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+
+      <!-- ✅ FREE -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border-2 border-gray-200 dark:border-gray-700">
+        <h2 class="text-xl font-bold text-gray-800 dark:text-white">Free</h2>
+        <div class="mt-4">
+          <span class="text-3xl font-bold text-gray-800 dark:text-white">Rp0</span>
+          <span class="text-gray-500">/bulan</span>
+        </div>
+        <ul class="mt-6 space-y-3">
+          <li class="flex items-start">
+            <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Lihat daftar UMKM</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Login sebagai investor</span>
+          </li>
+          <li class="flex items-start text-gray-400">
+            <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <circle cx="12" cy="12" r="10"/>
+            </svg>
+            <span>Ajukan minat investasi</span>
+          </li>
+          <li class="flex items-start text-gray-400">
+            <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <circle cx="12" cy="12" r="10"/>
+            </svg>
+            <span>Laporan analitik</span>
+          </li>
+        </ul>
+        <a href="login-investor.html"
+           class="mt-6 block w-full py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-md font-medium transition">
+          Mulai Gratis
+        </a>
+      </div>
+
+      <!-- 🚀 PRO (PROMO) -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6 border-2 border-green-500 relative">
+        <!-- Badge Promo -->
+        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+          PROMO HEMAT 78%
+        </div>
+        <h2 class="text-xl font-bold text-green-600">Pro</h2>
+        <div class="mt-4">
+          <div class="text-3xl font-bold text-gray-800 dark:text-white">Rp15.000</div>
+          <div class="text-gray-500 line-through mt-1">Rp70.000</div>
+          <span class="text-gray-500">/bulan</span>
+        </div>
+        <ul class="mt-6 space-y-3">
+          <li class="flex items-start">
+            <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Semua fitur Free</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Ajukan minat investasi</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Notifikasi real-time</span>
+          </li>
+          <li class="flex items-start text-gray-400">
+            <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <circle cx="12" cy="12" r="10"/>
+            </svg>
+            <span>Laporan analitik lengkap</span>
+          </li>
+        </ul>
+        <a href="daftar-investor.html"
+           class="mt-6 block w-full py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-md font-medium transition">
+          Langganan Pro
+        </a>
+      </div>
+
+      <!-- 💎 IMMORTAL -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border-2 border-purple-500">
+        <h2 class="text-xl font-bold text-purple-600">Immortal</h2>
+        <div class="mt-4">
+          <span class="text-3xl font-bold text-gray-800 dark:text-white">Rp250.000</span>
+          <span class="text-gray-500">/bulan</span>
+        </div>
+        <ul class="mt-6 space-y-3">
+          <li class="flex items-start">
+            <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Semua fitur Pro</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Laporan analitik lengkap</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Prioritas dalam kolaborasi</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Dukungan eksklusif</span>
+          </li>
+        </ul>
+        <a href="daftar-investor.html"
+           class="mt-6 block w-full py-2.5 bg-purple-600 hover:bg-purple-700 text-white rounded-md font-medium transition">
+          Jadi Immortal
+        </a>
+      </div>
+
+    </div>
+
+    <div class="mt-12 text-center text-gray-600 dark:text-gray-400">
+      <p>Pembayaran bulanan. Bisa dibatalkan kapan saja.</p>
+    </div>
+  </main>
+
+</body>
+</html>

@@ -10,7 +10,7 @@
       background-color: #f0f4f1;
     }
 
-    /* Border emas animasi */
+    /* Animasi border emas */
     @keyframes glowFlow {
       0% { box-shadow: 0 0 10px #d4af37; }
       50% { box-shadow: 0 0 20px #d4af37, 0 0 30px #003366; }
@@ -36,46 +36,129 @@
       background: #1f2937;
       color: white;
     }
+
+    /* Siluet dekorasi */
+    .silhouette-decor {
+      position: fixed;
+      right: -80px;
+      bottom: 100px;
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: -1;
+      width: 300px;
+      height: auto;
+    }
+
+    /* Navbar link aktif */
+    .nav-link-active {
+      color: #059669; /* hijau ARTHASENA */
+      font-weight: 600;
+    }
   </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center dark:bg-gray-900 dark:text-white">
+<body class="min-h-screen flex flex-col dark:bg-gray-900 dark:text-white">
 
-  <!-- Kartu Utama dengan Animasi Border Emas -->
-  <div class="glow-border p-8 max-w-md w-full text-center">
-
-    <!-- Logo -->
-    <img 
-      src="ARTHASENA.jpeg" 
-      alt="ARTHASENA" 
-      class="mx-auto h-16 w-auto mb-4"
-      onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48dGV4dCB4PSIwIiB5PSIuOWVtIiBmb250LXNpemU9IjQwIiBmaWxsPSJ3aGl0ZSI+QVJUSEFTRU5BPC90ZXh0Pjwvc3ZnPg=='"
-    />
-
-    <h1 class="text-2xl font-bold mb-4">ARTHASENA</h1>
-    <p class="mb-6 text-gray-600 dark:text-white-400">
-      Platform kolaborasi UMKM & Investor untuk kemakmuran bersama.
-    </p>
-
-    <div class="space-y-4">
-      <a href="login-umkm.html"
-         class="block w-full py-3 px-4 bg-green-600 hover:bg-green-700 text-white rounded-md transition">
-        Masuk sebagai UMKM
+  <!-- 🌐 Navbar -->
+  <nav class="w-full bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 z-10">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <!-- Navbar -->
+<div class="flex space-x-6">
+  <a href="harga.html" class="text-gray-600 hover:text-gray-900">Harga</a>
+</div>
+      <!-- Logo + Nama -->
+      <a href="index.html" class="flex items-center space-x-2">
+        <img src="ARTHASENA.jpeg" alt="ARTHASENA" class="h-8 w-auto rounded">
+        <span class="font-bold text-gray-800 dark:text-white">ARTHASENA</span>
       </a>
-      <a href="login-investor.html"
-         class="block w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition">
-        Masuk sebagai Investor
-      </a>
+
+      <!-- Menu Navigasi -->
+      <div class="flex space-x-6">
+        <a href="index.html" class="nav-link-active">Beranda</a>
+        <a href="tentang.html" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Tentang</a>
+      </div>
     </div>
+  </nav>
 
-    <p class="mt-4 text-sm text-gray-600 dark:text-gray-400">
-      Belum punya akun?  
-      <a href="daftar-umkm.html" class="text-green-600 hover:underline">Daftar UMKM</a> 
-      atau 
-      <a href="daftar-investor.html" class="text-blue-600 hover:underline">Daftar Investor</a>
-    </p>
+  <!--  Siluet Wanita (latar dekoratif) -->
+  <img 
+    src="siluet kepala wanita.png" 
+    alt="Siluet Budaya" 
+    class="silhouette-decor"
+    onerror="this.style.display='none'"
+  />
 
-  </div>
+  <!-- 🎯 Kartu Utama -->
+  <main class="flex-grow flex items-center justify-center p-4">
+    <div class="glow-border p-8 max-w-md w-full text-center">
 
+      <!-- Logo Besar -->
+      <img 
+        src="ARTHASENA.jpeg" 
+        alt="ARTHASENA" 
+        class="mx-auto h-16 w-auto mb-4"
+        onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48dGV4dCB4PSIwIiB5PSIuOWVtIiBmb250LXNpemU9IjQwIiBmaWxsPSJ3aGl0ZSI+QVJUSEFTRU5BPC90ZXh0Pjwvc3ZnPg=='"
+      />
+
+      <h1 class="text-2xl font-bold mb-4">ARTHASENA</h1>
+      <p class="mb-6 text-gray-600 dark:text-gray-300">
+        Platform kolaborasi UMKM & Investor untuk kemakmuran bersama.
+      </p>
+
+      <div class="space-y-4">
+        <a href="login-umkm.html"
+           class="block w-full py-3 px-4 bg-green-600 hover:bg-green-700 text-white rounded-md transition">
+          Masuk sebagai UMKM
+        </a>
+        <a href="login-investor.html"
+           class="block w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition">
+          Masuk sebagai Investor
+        </a>
+      </div>
+
+      <p class="mt-4 text-sm text-gray-600 dark:text-gray-400">
+        Belum punya akun?  
+        <a href="daftar-umkm.html" class="text-green-600 hover:underline">Daftar UMKM</a> 
+        atau 
+        <a href="daftar-investor.html" class="text-blue-600 hover:underline">Daftar Investor</a>
+      </p>
+
+    </div>
+  </main>
+<script>
+  function ajukanMinat(umkmEmail) {
+    // Cek apakah investor sudah login
+    const investorEmail = localStorage.getItem('userEmail');
+    if (!investorEmail) {
+      alert('Silakan login dulu!');
+      return;
+    }
+
+    // Ambil data minat yang sudah ada
+    const minatList = JSON.parse(localStorage.getItem('minatInvestor') || '[]');
+
+    // Cek apakah sudah pernah ajukan minat ke UMKM ini
+    const sudahAjukan = minatList.some(
+      item => item.investorEmail === investorEmail && item.umkmEmail === umkmEmail
+    );
+
+    if (sudahAjukan) {
+      alert('Anda sudah mengajukan minat ke UMKM ini.');
+      return;
+    }
+
+    // Simpan minat baru
+    const minatBaru = {
+      investorEmail: investorEmail,
+      umkmEmail: umkmEmail,
+      tanggal: new Date().toISOString().split('T')[0] // format: YYYY-MM-DD
+    };
+
+    minatList.push(minatBaru);
+    localStorage.setItem('minatInvestor', JSON.stringify(minatList));
+
+    alert('✅ Minat berhasil diajukan!\nUMKM akan segera melihat permintaan Anda.');
+  }
+</script>
 </body>
 </html>
 
