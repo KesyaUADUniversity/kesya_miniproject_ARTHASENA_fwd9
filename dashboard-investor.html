@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Investor - ARTHASENA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #ffffff;
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="bg-white border-b">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <span class="font-bold text-blue-700">ARTHASENA - Investor</span>
+      <button onclick="logout()" class="text-sm text-red-600 hover:underline">Logout</button>
+    </div>
+  </nav>
+
+  <main class="container mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-6">UMKM Berdasarkan Kategori</h1>
+
+    <!-- Daftar akan muncul di sini -->
+    <div id="groupedUMKM"></div>
+  </main>
+
+  <script>
+    // Cek login
+    if (localStorage.getItem('isLoggedIn') !== 'true' || localStorage.getItem('userRole') !== 'investor') {
+      alert('Silakan login dulu!');
+      window.location.href = 'login-investor.html';
+    }
+
+    // Format Rupiah
+    function formatRupiah(angka) {
+      return new Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+        minimumFractionDigits: 0
+      }).format(angka);
+    }
+
+    function logout() {
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('userRole');
+      localStorage.removeItem('userEmail');
+      window.location.href = 'index.html';
+    }
+
+    // Ambil data UMKM
+    const umkmList = JSON.parse(localStorage.getItem('umkm_businesses') || '[]');
+    const container = document.getElementById('groupedUMKM');
+
+    // Daftar kategori (urutan tetap)
+    const categories = [
+      { id: 'kuliner', name: '🍜 Kuliner' },
+      { id: 'fashion', name: '👕 Fashion' },
+      { id: 'kerajinan', name: '🪵 Kerajinan Tangan' },
+      { id: 'jasa', name: '💼 Jasa' },
+      { id: 'pertanian', name: '🌾 Pertanian' }
+    ];
+
+    // Kelompokkan data
+    const grouped = {};
+    umkmList.forEach(umkm => {
+      if (!grouped[umkm.kategori]) {
+        grouped[umkm.kategori] = [];
+      }
+      grouped[umkm.kategori].push(umkm);
+    });
+
+    // Render
+    if (umkmList.length === 0) {
+      container.innerHTML = `
+        <div class="bg-white p-8 rounded-lg border text-center">
+          <p class="text-gray-500">Belum ada UMKM yang terdaftar.</p>
+          <p class="mt-2 text-sm text-gray-400">UMKM perlu mendaftar di platform ini terlebih dahulu.</p>
+        </div>
+      `;
+    } else {
+      let html = '';
+      categories.forEach(cat => {
+        const items = grouped[cat.id] || [];
+        if (items.length > 0) {
+          html += `
+            <div class="mb-8">
+              <h2 class="text-xl font-bold mb-4 text-gray-800">${cat.name}</h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                ${items.map(umkm => `
+                  <div class="bg-white p-5 rounded-lg border hover:shadow-md transition">
+                    <h3 class="font-bold text-lg text-gray-800">${umkm.namaUsaha}</h3>
+                    <p class="mt-2 text-gray-600">Pendapatan: ${formatRupiah(umkm.income)}/bulan</p>
+                    <button class="mt-4 w-full py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-md transition">
+                      Ajukan Minat
+                    </button>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        }
+      });
+      container.innerHTML = html;
+    }
+  </script>
+</body>
+</html>

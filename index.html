@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UMKM ARTHASENA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #f0f4f1;
+    }
+
+    /* Border emas animasi */
+    @keyframes glowFlow {
+      0% { box-shadow: 0 0 10px #d4af37; }
+      50% { box-shadow: 0 0 20px #d4af37, 0 0 30px #003366; }
+      100% { box-shadow: 0 0 10px #d4af37; }
+    }
+
+    .glow-border {
+      position: relative;
+      padding: 2rem;
+      border-radius: 1rem;
+      background: white;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      animation: glowFlow 4s ease-in-out infinite;
+      transition: transform 0.3s ease;
+    }
+
+    .glow-border:hover {
+      transform: scale(1.02);
+    }
+
+    /* Dark mode */
+    .dark .glow-border {
+      background: #1f2937;
+      color: white;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center dark:bg-gray-900 dark:text-white">
+
+  <!-- Kartu Utama dengan Animasi Border Emas -->
+  <div class="glow-border p-8 max-w-md w-full text-center">
+
+    <!-- Logo -->
+    <img 
+      src="ARTHASENA.jpeg" 
+      alt="ARTHASENA" 
+      class="mx-auto h-16 w-auto mb-4"
+      onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48dGV4dCB4PSIwIiB5PSIuOWVtIiBmb250LXNpemU9IjQwIiBmaWxsPSJ3aGl0ZSI+QVJUSEFTRU5BPC90ZXh0Pjwvc3ZnPg=='"
+    />
+
+    <h1 class="text-2xl font-bold mb-4">ARTHASENA</h1>
+    <p class="mb-6 text-gray-600 dark:text-white-400">
+      Platform kolaborasi UMKM & Investor untuk kemakmuran bersama.
+    </p>
+
+    <div class="space-y-4">
+      <a href="login-umkm.html"
+         class="block w-full py-3 px-4 bg-green-600 hover:bg-green-700 text-white rounded-md transition">
+        Masuk sebagai UMKM
+      </a>
+      <a href="login-investor.html"
+         class="block w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition">
+        Masuk sebagai Investor
+      </a>
+    </div>
+
+    <p class="mt-4 text-sm text-gray-600 dark:text-gray-400">
+      Belum punya akun?  
+      <a href="daftar-umkm.html" class="text-green-600 hover:underline">Daftar UMKM</a> 
+      atau 
+      <a href="daftar-investor.html" class="text-blue-600 hover:underline">Daftar Investor</a>
+    </p>
+
+  </div>
+
+</body>
+</html>
+

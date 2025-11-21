@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daftar UMKM - ARTHASENA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #f0f4f1; /* Sage green */
+      color: #1a202c;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col dark:bg-gray-900 dark:text-white">
+
+  <!-- Navbar -->
+  <nav class="w-full bg-white dark:bg-gray-800 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <span class="text-xl font-bold text-green-700 dark:text-green-400">ARTHASENA</span>
+      <a href="index.html" class="text-sm text-gray-600 dark:text-gray-300 hover:underline">
+        &larr; Beranda
+      </a>
+    </div>
+  </nav>
+
+  <!-- Konten Utama -->
+  <main class="flex-grow flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg max-w-md w-full">
+      <h2 class="text-xl font-bold mb-4 text-center">Daftar Usaha UMKM</h2>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-6 text-center">
+        Buat akun dan daftarkan usaha Anda di ARTHASENA.
+      </p>
+
+      <form id="umkmForm" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium mb-1">Email (untuk login)</label>
+          <input
+            type="email"
+            id="email"
+            class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600"
+            required
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Password (minimal 6 karakter)</label>
+          <input
+            type="password"
+            id="password"
+            class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600"
+            minlength="6"
+            required
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Nama Usaha</label>
+          <input
+            type="text"
+            id="namaUsaha"
+            class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600"
+            required
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Kategori Usaha</label>
+          <select
+            id="kategori"
+            class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600"
+            required
+          >
+            <option value="">Pilih kategori</option>
+            <option value="kuliner">Kuliner</option>
+            <option value="fashion">Fashion</option>
+            <option value="kerajinan">Kerajinan Tangan</option>
+            <option value="jasa">Jasa</option>
+            <option value="pertanian">Pertanian</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Pendapatan Bulanan (Rp)</label>
+          <input
+            type="number"
+            id="income"
+            min="0"
+            class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600"
+            placeholder="Contoh: 5000000"
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="w-full py-2.5 bg-green-600 hover:bg-green-700 text-white font-medium rounded-md transition"
+        >
+          Daftar & Simpan Usaha
+        </button>
+      </form>
+
+      <div class="mt-4 text-center">
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+          Sudah punya akun?
+          <a href="login-umkm.html" class="text-green-600 hover:underline font-medium">
+            Login di sini
+          </a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- JavaScript: Simpan data ke localStorage -->
+  <script>
+    document.getElementById('umkmForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Ambil nilai
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const namaUsaha = document.getElementById('namaUsaha').value.trim();
+      const kategori = document.getElementById('kategori').value;
+      const income = parseFloat(document.getElementById('income').value);
+
+      // Validasi sederhana
+      if (password.length < 6) {
+        alert('Password minimal 6 karakter!');
+        return;
+      }
+      if (!namaUsaha || !kategori || isNaN(income) || income <= 0) {
+        alert('Harap lengkapi semua data usaha dengan benar!');
+        return;
+      }
+
+      // Cek apakah email sudah terdaftar
+      const accounts = JSON.parse(localStorage.getItem('umkm_accounts') || '[]');
+      if (accounts.some(acc => acc.email === email)) {
+        alert('Email ini sudah terdaftar! Silakan login.');
+        return;
+      }
+
+      // Simpan akun
+      accounts.push({ email, password });
+      localStorage.setItem('umkm_accounts', JSON.stringify(accounts));
+
+      // Simpan usaha
+const businesses = JSON.parse(localStorage.getItem('umkm_businesses') || '[]');
+businesses.push({
+  email: document.getElementById('email').value.trim(),
+  namaUsaha: document.getElementById('namaUsaha').value.trim(),
+  kategori: document.getElementById('kategori').value,
+  income: parseFloat(document.getElementById('income').value)
+});
+localStorage.setItem('umkm_businesses', JSON.stringify(businesses));
+
+      // Sukses
+      alert('✅ Pendaftaran berhasil!\nSilakan login untuk mengelola usaha Anda.');
+      window.location.href = 'login-umkm.html';
+    });
+  </script>
+</body>
+</html>

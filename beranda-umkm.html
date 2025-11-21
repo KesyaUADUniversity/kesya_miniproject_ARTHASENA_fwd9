@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Beranda UMKM - ARTHASENA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style> body { background-color: #f0f4f1; } </style>
+</head>
+<body class="min-h-screen flex flex-col dark:bg-gray-900 dark:text-white">
+
+  <!-- Navbar -->
+  <nav class="bg-white dark:bg-gray-800 shadow">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <span class="font-bold text-green-700 dark:text-green-400">ARTHASENA - UMKM</span>
+      <button onclick="logout()" class="text-sm text-red-600 hover:underline">Logout</button>
+    </div>
+  </nav>
+
+  <main class="container mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-6">Usaha Saya</h1>
+
+    <div id="usahaSaya">
+      <!-- Data akan muncul di sini -->
+    </div>
+  </main>
+
+  <script>
+    // Cek login
+    if (localStorage.getItem('isLoggedIn') !== 'true' || localStorage.getItem('userRole') !== 'umkm') {
+      alert('Silakan login dulu!');
+      window.location.href = 'index.html';
+    }
+
+    function formatRupiah(angka) {
+      return new Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+        minimumFractionDigits: 0
+      }).format(angka);
+    }
+
+    function logout() {
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('userRole');
+      localStorage.removeItem('userEmail');
+      window.location.href = 'index.html';
+    }
+
+    // Tampilkan usaha milik user
+    const userEmail = localStorage.getItem('userEmail');
+    const businesses = JSON.parse(localStorage.getItem('umkm_businesses') || '[]');
+    const usaha = businesses.find(b => b.email === userEmail);
+
+    const container = document.getElementById('usahaSaya');
+    if (usaha) {
+      container.innerHTML = `
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
+          <h2 class="text-xl font-bold text-green-700 dark:text-green-400">${usaha.namaUsaha}</h2>
+          <p><strong>Kategori:</strong> ${usaha.kategori}</p>
+          <p><strong>Pendapatan:</strong> ${formatRupiah(usaha.income)}/bulan</p>
+          <p class="mt-4 text-sm text-gray-600 dark:text-gray-400">Email: ${userEmail}</p>
+        </div>
+      `;
+    } else {
+      container.innerHTML = '<p class="text-gray-500">Belum ada data usaha. Silakan daftar dulu.</p>';
+    }
+  </script>
+</body>
+</html>
